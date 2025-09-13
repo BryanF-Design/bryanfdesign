@@ -177,3 +177,67 @@ body {
 @media (max-width: 768px){
   .cursor-dot,.cursor-ring{ display:none } /* en móvil, sin cursor custom */
 }
+
+/* ---------- Hero background ---------- */
+.hero-bg{
+  position:absolute; inset:0; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(60% 60% at 50% 0%, rgba(180,227,50,0.18) 0%, rgba(0,0,0,0) 60%),
+    conic-gradient(from 0deg at 50% 60%, #0f0f10, #121212, #0f0f10, #0f0f10);
+  animation: heroSpin 18s linear infinite;
+}
+@keyframes heroSpin{ 0%{transform:rotate(0)} 100%{transform:rotate(360deg)} }
+
+.hero-noise{
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  opacity:.06; mix-blend-mode:soft-light;
+  background-image:url("/grain.png"); /* opcional */
+  background-size:320px 320px;
+}
+
+.hero-halo{
+  position:absolute; left:50%; top:45%; z-index:1; pointer-events:none;
+  width:min(90vw,900px); aspect-ratio:1/1; transform:translateX(-50%);
+  background:radial-gradient(circle, rgba(180,227,50,0.18) 0%, rgba(0,0,0,0) 60%);
+  filter:blur(100px);
+}
+
+/* ---------- Scroll cue ---------- */
+.scroll-cue{
+  width:28px; height:44px; border:2px solid rgba(255,255,255,.35);
+  border-radius:999px; position:relative; opacity:.8;
+}
+.scroll-cue span{
+  position:absolute; left:50%; top:8px; width:6px; height:6px; border-radius:999px;
+  background:#b4e332; transform:translateX(-50%);
+  animation: cue 1.8s ease-in-out infinite;
+}
+@keyframes cue{
+  0%{ opacity:0; transform:translate(-50%, 0) }
+  20%{ opacity:1 }
+  100%{ opacity:0; transform:translate(-50%, 18px) }
+}
+
+/* ---------- Buttons (ya definidos, por si no los tienes) ---------- */
+.btn{
+  display:inline-block; padding:12px 20px; border-radius:14px;
+  font-weight:800; letter-spacing:.2px; transition:transform .2s ease, background .2s ease, color .2s ease;
+  will-change:transform; text-wrap:balance;
+}
+.btn-solid{ background:#b4e332; color:#212121; }
+.btn-solid:hover{ transform:scale(1.08); }
+.btn-outline{ border:2px solid #b4e332; color:#b4e332; }
+.btn-outline:hover{ background:#b4e332; color:#212121; }
+
+/* ---------- Responsive tweaks ---------- */
+@media (max-width: 640px){
+  .hero-halo{ width:min(110vw,820px); filter:blur(90px) }
+  .scroll-cue{ transform:scale(.9) }
+}
+
+
+/* globals.css */
+.split { white-space: normal; word-break: normal; }
+.split .word { white-space: nowrap; display: inline-block; }
+.split .space { display:inline-block; width:.4em; } /* asegura hueco visible */
+
