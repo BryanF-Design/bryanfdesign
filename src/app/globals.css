@@ -84,3 +84,96 @@ body {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
+
+/* ===== AURORA (conic + radial) ===== */
+.aurora{
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(60% 60% at 50% 30%, rgba(180,227,50,0.16) 0%, rgba(0,0,0,0) 60%),
+    conic-gradient(from 0deg at 50% 50%, #0f0f10, #0f0f10, #1a1a1a, #0f0f10, #0f0f10);
+  animation: auroraSpin 16s linear infinite;
+  filter:saturate(110%);
+}
+@keyframes auroraSpin{ 0%{transform:rotate(0) scale(1.02)} 100%{transform:rotate(360deg) scale(1.02)} }
+
+/* ===== GRAIN overlay ===== */
+.grain{
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+  opacity:.08; mix-blend-mode:soft-light;
+  background-image:url("/grain.png"); /* opcional */
+  background-size:320px 320px;
+}
+
+/* ===== Glow que sigue el mouse ===== */
+.glow{
+  position:fixed; left:50%; top:50%; z-index:1; pointer-events:none;
+  width:min(78vw,720px); aspect-ratio:1/1; border-radius:9999px;
+  transform:translate(-50%,-50%);
+  background:radial-gradient(circle, rgba(180,227,50,0.22) 0%, rgba(0,0,0,0) 60%);
+  filter:blur(90px);
+}
+
+/* ===== Canvas estela ===== */
+.trail{ position:fixed; inset:0; z-index:2; pointer-events:none; }
+
+/* ===== Glitch + typing ===== */
+.glitch{ position:relative; display:inline-block; filter:drop-shadow(0 0 12px #b4e332); }
+.glitch::before,.glitch::after{
+  content:attr(data-text); position:absolute; inset:0; clip-path:inset(0 0 0 0);
+}
+.glitch::before{ left:2px; text-shadow:-2px 0 #b4e332; mix-blend-mode:screen; }
+.glitch::after{ left:-2px; text-shadow:2px 0 #b4e332; mix-blend-mode:screen; }
+@keyframes glitchy{
+  0%,100%{transform:translate(0)}
+  20%{transform:translate(1px,-1px)}
+  40%{transform:translate(-2px,1px)}
+  60%{transform:translate(2px,0)}
+  80%{transform:translate(-1px,1px)}
+}
+.typing{ display:inline-block; border-right:2px solid #b4e332; white-space:nowrap; overflow:hidden; }
+
+/* ===== Botones ===== */
+.btn{
+  display:inline-block; padding:12px 20px; border-radius:14px;
+  font-weight:800; letter-spacing:.2px; transition:transform .2s ease, background .2s ease, color .2s ease;
+  will-change:transform; text-wrap:balance;
+}
+.btn-solid{ background:#b4e332; color:#212121; }
+.btn-solid:hover{ transform:scale(1.08); }
+.btn-outline{ border:2px solid #b4e332; color:#b4e332; }
+.btn-outline:hover{ background:#b4e332; color:#212121; }
+
+/* ===== Marquee ===== */
+.marquee-wrap{ position:relative; margin-top:40px; overflow:hidden; }
+.marquee{ display:flex; gap:48px; white-space:nowrap; width:max-content; animation:marquee 18s linear infinite; opacity:.85; }
+.marquee span{ font-weight:700; color:#F2F2F2; }
+@keyframes marquee{ from{ transform:translateX(0) } to{ transform:translateX(-50%) } }
+
+/* ===== Responsivo ===== */
+@media (max-width: 640px){
+  .btn{ padding:11px 18px; border-radius:12px; }
+  .marquee{ gap:28px; animation-duration: 22s; }
+  .glow{ width:min(95vw,640px); filter:blur(75px); }
+}
+
+.link-underline{position:relative}
+.link-underline::after{
+  content:"";position:absolute;left:0;bottom:-2px;height:2px;width:100%;
+  background:linear-gradient(90deg,#b4e332,transparent);
+  transform:scaleX(0);transform-origin:left;transition:transform .35s ease
+}
+.link-underline:hover::after{transform:scaleX(1)}
+
+/* Cursor */
+.cursor-dot{
+  position:fixed; z-index:50; width:6px; height:6px; border-radius:9999px;
+  background:#b4e332; pointer-events:none; mix-blend-mode:normal
+}
+.cursor-ring{
+  position:fixed; z-index:49; width:28px; height:28px; border-radius:9999px;
+  border:2px solid rgba(180,227,50,.7); pointer-events:none; mix-blend-mode:screen;
+  backdrop-filter: blur(1px);
+}
+@media (max-width: 768px){
+  .cursor-dot,.cursor-ring{ display:none } /* en móvil, sin cursor custom */
+}
