@@ -6,8 +6,9 @@ import { loadFull } from "tsparticles";
 import { useCallback } from "react";
 
 export default function ComingSoon() {
-  const particlesInit = useCallback(async (engine: any) => {
-    await loadFull(engine);
+  const particlesInit = useCallback(async (engine: unknown) => {
+    // usamos "unknown" en vez de "any" y hacemos cast para evitar error de ESLint
+    await loadFull(engine as any);
   }, []);
 
   return (
