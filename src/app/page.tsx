@@ -1,74 +1,63 @@
 "use client";
-
-import { motion } from "framer-motion";
-import Particles from "react-tsparticles";
-import { loadFull } from "tsparticles";
-import { useCallback } from "react";
+import { useEffect } from "react";
+import gsap from "gsap";
 
 export default function ComingSoon() {
-  const particlesInit = useCallback(async (engine: unknown) => {
-    // usamos "unknown" en vez de "any" y hacemos cast para evitar error de ESLint
-    await loadFull(engine as any);
+  useEffect(() => {
+    // Animación del título
+    gsap.fromTo(
+      ".title",
+      { opacity: 0, y: 100 },
+      { opacity: 1, y: 0, duration: 1.5, ease: "power4.out" }
+    );
+
+    // Glow infinito
+    gsap.to(".title", {
+      textShadow: "0px 0px 20px #b4e332, 0px 0px 40px #b4e332",
+      repeat: -1,
+      yoyo: true,
+      duration: 2,
+    });
+
+    // Partículas sencillas siguiendo el mouse
+    const particles = document.querySelectorAll(".particle");
+    document.addEventListener("mousemove", (e) => {
+      particles.forEach((p, i) => {
+        gsap.to(p, {
+          x: e.clientX + Math.sin(i) * 50,
+          y: e.clientY + Math.cos(i) * 50,
+          duration: 1.5,
+          ease: "expo.out",
+        });
+      });
+    });
   }, []);
 
   return (
-    <main className="relative min-h-screen bg-[#212121] flex items-center justify-center overflow-hidden">
-      {/* Partículas de fondo */}
-      <Particles
-        id="tsparticles"
-        init={particlesInit}
-        options={{
-          background: { color: "#212121" },
-          particles: {
-            color: { value: ["#b4e332", "#F2F2F2"] },
-            move: { enable: true, speed: 1, direction: "none", outModes: "bounce" },
-            number: { value: 80 },
-            opacity: { value: 0.5 },
-            shape: { type: "circle" },
-            size: { value: { min: 1, max: 5 } },
-            links: { enable: true, color: "#b4e332", opacity: 0.3 },
-          },
-          interactivity: {
-            events: { onHover: { enable: true, mode: "repulse" } },
-            modes: { repulse: { distance: 100 } },
-          },
-        }}
-        className="absolute inset-0 -z-10"
-      />
+    <main className="relative min-h-screen bg-[#212121] flex flex-col items-center justify-center overflow-hidden">
+      {/* Texto principal */}
+      <h1 className="title text-6xl md:text-8xl font-extrabold text-[#b4e332]">
+        BRYANF DESIGN
+      </h1>
+      <p className="mt-6 text-lg text-[#F2F2F2]">
+        🚀 Portafolio en construcción — Coming Soon
+      </p>
 
-      {/* Contenido */}
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className="text-center"
+      {/* Botón */}
+      <a
+        href="/contacto"
+        className="mt-10 px-6 py-3 bg-[#b4e332] text-[#212121] rounded-lg font-bold hover:scale-110 transition-transform"
       >
-        <motion.h1
-          className="text-6xl md:text-7xl font-extrabold"
-          style={{ color: "#b4e332", textShadow: "0 0 20px #b4e332" }}
-          animate={{ scale: [1, 1.05, 1] }}
-          transition={{ repeat: Infinity, duration: 2 }}
-        >
-          BRYANF DESIGN
-        </motion.h1>
+        Contáctame
+      </a>
 
-        <motion.p
-          className="mt-4 text-xl md:text-2xl text-[#F2F2F2]"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-        >
-          🚀 Portafolio en construcción — prepárate para algo épico.
-        </motion.p>
-
-        <motion.a
-          href="/contacto"
-          className="inline-block mt-8 px-6 py-3 rounded-xl font-bold bg-[#b4e332] text-[#212121] hover:scale-105 transition-transform"
-          whileHover={{ boxShadow: "0 0 20px #b4e332" }}
-        >
-          Contáctame
-        </motion.a>
-      </motion.div>
+      {/* Partículas */}
+      {Array.from({ length: 20 }).map((_, i) => (
+        <div
+          key={i}
+          className="particle absolute w-2 h-2 rounded-full bg-[#b4e332] opacity-60"
+        />
+      ))}
     </main>
   );
 }
