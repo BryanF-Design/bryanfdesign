@@ -1,58 +1,72 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Particles from "react-tsparticles";
+import { loadFull } from "tsparticles";
+import { useCallback } from "react";
 
-export default function Home() {
+export default function ComingSoon() {
+  const particlesInit = useCallback(async (engine: any) => {
+    await loadFull(engine);
+  }, []);
+
   return (
-    <main className="min-h-screen bg-[#212121] flex items-center justify-center p-8">
+    <main className="relative min-h-screen bg-[#212121] flex items-center justify-center overflow-hidden">
+      {/* Partículas de fondo */}
+      <Particles
+        id="tsparticles"
+        init={particlesInit}
+        options={{
+          background: { color: "#212121" },
+          particles: {
+            color: { value: ["#b4e332", "#F2F2F2"] },
+            move: { enable: true, speed: 1, direction: "none", outModes: "bounce" },
+            number: { value: 80 },
+            opacity: { value: 0.5 },
+            shape: { type: "circle" },
+            size: { value: { min: 1, max: 5 } },
+            links: { enable: true, color: "#b4e332", opacity: 0.3 },
+          },
+          interactivity: {
+            events: { onHover: { enable: true, mode: "repulse" } },
+            modes: { repulse: { distance: 100 } },
+          },
+        }}
+        className="absolute inset-0 -z-10"
+      />
+
+      {/* Contenido */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="text-center max-w-3xl"
+        className="text-center"
       >
         <motion.h1
-          className="text-6xl md:text-7xl font-extrabold tracking-tight"
-          style={{ color: "#b4e332" }}
-          initial={{ y: -50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1, delay: 0.3 }}
+          className="text-6xl md:text-7xl font-extrabold"
+          style={{ color: "#b4e332", textShadow: "0 0 20px #b4e332" }}
+          animate={{ scale: [1, 1.05, 1] }}
+          transition={{ repeat: Infinity, duration: 2 }}
         >
           BRYANF DESIGN
         </motion.h1>
 
         <motion.p
-          className="mt-6 text-xl md:text-2xl"
-          style={{ color: "#F2F2F2" }}
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1, delay: 0.6 }}
-        >
-          Portafolio en proceso 🚀  
-          <br /> Innovación, diseño y velocidad.
-        </motion.p>
-
-        <motion.div
-          className="mt-10 flex justify-center gap-6"
+          className="mt-4 text-xl md:text-2xl text-[#F2F2F2]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
+          transition={{ delay: 0.5 }}
         >
-          <a
-            href="#proyectos"
-            className="px-6 py-3 rounded-xl font-semibold"
-            style={{ backgroundColor: "#b4e332", color: "#212121" }}
-          >
-            Ver proyectos
-          </a>
-          <a
-            href="/contacto"
-            className="px-6 py-3 rounded-xl font-semibold border"
-            style={{ borderColor: "#b4e332", color: "#b4e332" }}
-          >
-            Contáctame
-          </a>
-        </motion.div>
+          🚀 Portafolio en construcción — prepárate para algo épico.
+        </motion.p>
+
+        <motion.a
+          href="/contacto"
+          className="inline-block mt-8 px-6 py-3 rounded-xl font-bold bg-[#b4e332] text-[#212121] hover:scale-105 transition-transform"
+          whileHover={{ boxShadow: "0 0 20px #b4e332" }}
+        >
+          Contáctame
+        </motion.a>
       </motion.div>
     </main>
   );
