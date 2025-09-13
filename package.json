@@ -9,12 +9,16 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@react-three/drei": "^10.7.6",
+    "@react-three/fiber": "^9.3.0",
+    "@studio-freight/lenis": "^1.0.42",
     "framer-motion": "^12.23.12",
     "gsap": "^3.13.0",
     "next": "15.5.3",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-tsparticles": "^2.12.2",
+    "three": "^0.180.0",
     "tsparticles": "^3.9.1",
     "tsparticles-engine": "^2.12.0"
   },
