@@ -1,30 +1,37 @@
-import Hero from "./components/Hero";
-import Section from "./components/Section";
+// src/app/page.tsx
+import Hero from "./components/home/Hero";
+import ToolsRail from "./components/home/ToolsRail";
+import ProjectsGrid from "./components/home/ProjectsGrid";
+import ClientsMarquee from "./components/home/ClientsMarquee";
+import CTA from "./components/home/CTA";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <main className="bg-[#0f0f10] text-white">
+    <main className="relative flex flex-col">
+      {/* Hero section */}
       <Hero />
 
-      {/* Ejemplo de highlights; puedes quitarlo o editarlo */}
-      <Section>
-        <div className="grid md:grid-cols-3 gap-6">
-          {[
-            { t: "Velocidad", d: "Core Web Vitals en verde, siempre." },
-            { t: "SEO real", d: "Estructura, schema, OG y contenido que posiciona." },
-            { t: "Marca", d: "UI sobria, microinteracciones y coherencia visual." },
-          ].map((i, k) => (
-            <div
-              key={k}
-              data-reveal
-              className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 hover:-translate-y-1 transition-transform"
-            >
-              <h3 className="font-bold text-lg">{i.t}</h3>
-              <p className="text-white/70 mt-2">{i.d}</p>
-            </div>
-          ))}
-        </div>
-      </Section>
+      {/* Tools rail */}
+      <ToolsRail />
+
+      {/* Projects */}
+      <section
+        id="projects"
+        className="mx-auto w-full max-w-7xl px+5 py-20 lg:px-10"
+      >
+        <ProjectsGrid />
+      </section>
+
+      {/* Clients */}
+      <section
+        id="clients"
+        className="mx-auto w-full max-w-7xl px-6 py-20 lg:px-10"
+      >
+        <ClientsMarquee />
+      </section>
+
+      {/* CTA FULL WIDTH */}
+      <CTA />
     </main>
   );
 }

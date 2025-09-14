@@ -1,38 +1,55 @@
 "use client";
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
+
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 export default function Cursor() {
-  const dot = useRef<HTMLDivElement>(null);
-  const ring = useRef<HTMLDivElement>(null);
+  const [pos, setPos] = useState({ x: -100, y: -100 });
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const d = dot.current!, r = ring.current!;
-    gsap.set([d, r], { xPercent: -50, yPercent: -50 });
-
-    const move = (e: MouseEvent) => {
-      gsap.to(d, { x: e.clientX, y: e.clientY, duration: 0.12, ease: "expo.out" });
-      gsap.to(r, { x: e.clientX, y: e.clientY, duration: 0.25, ease: "expo.out" });
+    setMounted(true);
+    const onMove = (e: MouseEvent) => {
+      setPos({ x: e.clientX, y: e.clientY });
     };
-    window.addEventListener("mousemove", move);
-
-    const hoverables = "a, button, .btn, .link-underline";
-    const enter = () => gsap.to(r, { scale: 1.6, duration: 0.2 });
-    const leave = () => gsap.to(r, { scale: 1, duration: 0.2 });
-    document.querySelectorAll(hoverables).forEach(el => {
-      el.addEventListener("mouseenter", enter);
-      el.addEventListener("mouseleave", leave);
-    });
-
-    return () => {
-      window.removeEventListener("mousemove", move);
-    };
+    window.addEventListener("mousemove", onMove, { passive: true });
+    return () => window.removeEventListener("mousemove", onMove);
   }, []);
 
-  return (
-    <>
-      <div ref={ring} className="cursor-ring" />
-      <div ref={dot} className="cursor-dot" />
-    </>
+  // No mostrar en pantallas táctiles
+  useEffect(() => {
+    const isCoarse = window.matchMedia("(pointer: coarse)").matches;
+    if (isCoarse) setMounted(false);
+  }, []);
+
+  const cursor = (
+    <div
+      style={{
+        position: "fixed",
+        left: 0,
+        top: 0,
+        width: 0,
+        height: 0,
+        pointerEvents: "none",
+        zIndex: 9999,
+        transform: `translate3d(${pos.x}px, ${pos.y}px, 0)`,
+      }}
+    >
+      {/* circulito */}
+      <div
+        style={{
+          width: 16,
+          height: 16,
+          marginLeft: -8,
+          marginTop: -8,
+          borderRadius: "9999px",
+          border: "2px solid #B4E332",
+          boxShadow: "0 0 12px #B4E33288",
+        }}
+      />
+    </div>
   );
+
+  if (!mounted) return null;
+  return createPortal(cursor, document.body);
 }
