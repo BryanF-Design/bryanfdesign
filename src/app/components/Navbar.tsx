@@ -15,11 +15,11 @@ const NAV = [
 
 // Íconos locales en /public
 const SOCIAL = [
-  { href: "https://www.facebook.com/profile.php?id=61580675727850", label: "Facebook", iconPath: "/facebook-boxed-svgrepo-com.svg" },
+  { href: "https://www.facebook.com/share/1R1rS2ToKf/", label: "Facebook", iconPath: "/facebook-boxed-svgrepo-com.svg" },
   { href: "https://www.instagram.com/bryanf_design/", label: "Instagram", iconPath: "/instagram-svgrepo-com (2).svg" },
   { href: "https://wa.me/5210000000000", label: "WhatsApp", iconPath: "/whatsapp-svgrepo-com (1).svg" },
   { href: "https://github.com/BryanF-Design", label: "GitHub", iconPath: "/github-svgrepo-com.svg" },
-  { href: "https://www.linkedin.com/in/bryanfdesigner/", label: "LinkedIn", iconPath: "/linkedin-svgrepo-com (1).svg" },
+  { href: "https://www.linkedin.com/in/bryanfdesigner", label: "LinkedIn", iconPath: "/linkedin-svgrepo-com (1).svg" },
 ];
 
 // SVG como máscara para colorearlo con currentColor
