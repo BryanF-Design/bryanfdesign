@@ -4,11 +4,11 @@ import Image from "next/image";
 const BRAND = "#B4E332";
 
 const SOCIAL = [
-  { href: "https://www.facebook.com/tuusuario", label: "Facebook", iconPath: "/facebook-boxed-svgrepo-com.svg" },
-  { href: "https://www.instagram.com/tuusuario", label: "Instagram", iconPath: "/instagram-svgrepo-com (2).svg" },
+  { href: "https://www.facebook.com/profile.php?id=61580675727850", label: "Facebook", iconPath: "/facebook-boxed-svgrepo-com.svg" },
+  { href: "https://www.instagram.com/bryanf_design/", label: "Instagram", iconPath: "/instagram-svgrepo-com (2).svg" },
   { href: "https://wa.me/5210000000000", label: "WhatsApp", iconPath: "/whatsapp-svgrepo-com (1).svg" },
-  { href: "https://github.com/tuusuario", label: "GitHub", iconPath: "/github-svgrepo-com.svg" },
-  { href: "https://www.linkedin.com/in/tuusuario", label: "LinkedIn", iconPath: "/linkedin-svgrepo-com (1).svg" },
+  { href: "https://github.com/BryanF-Design", label: "GitHub", iconPath: "/github-svgrepo-com.svg" },
+  { href: "https://www.linkedin.com/in/bryanfdesigner/", label: "LinkedIn", iconPath: "/linkedin-svgrepo-com (1).svg" },
 ];
 
 function SocialGlyph({ path, className = "" }: { path: string; className?: string }) {
