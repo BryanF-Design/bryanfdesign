@@ -32,11 +32,11 @@ export default function Preloader() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.35 }}
+          transition={{ duration: 0.15 }}
           className="fixed inset-0 z-[100] grid place-items-center bg-black"
           style={{
             background:
-              "radial-gradient(80% 60% at 50% 40%, rgba(0,0,0,.2), rgba(0,0,0,.95) 60%)",
+              "radial-gradient(100% 90% at 90% 80%, rgba(0,0,0,.2), rgba(0,0,0,.95) 90%)",
           }}
         >
           {/* Haz / glow de fondo */}
@@ -45,9 +45,9 @@ export default function Preloader() {
             className="absolute inset-0"
             initial={{ opacity: 0.2 }}
             animate={{ opacity: [0.2, 0.5, 0.2] }}
-            transition={{ repeat: Infinity, duration: 1.4, ease: "easeInOut" }}
+            transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut" }}
             style={{
-              background: `radial-gradient(40% 30% at 50% 50%, ${BRAND}22, transparent 60%)`,
+              background: `radial-gradient(80% 70% at 80% 70%, ${BRAND}22, transparent 80%)`,
               filter: "blur(18px)",
             }}
           />
@@ -75,7 +75,7 @@ export default function Preloader() {
             className="absolute h-28 w-28 rounded-full"
             initial={{ scale: 0.6, opacity: 0 }}
             animate={{ scale: [0.6, 1.15, 1.35], opacity: [0, 1, 0] }}
-            transition={{ duration: 0.9, ease: "easeOut" }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
             style={{
               boxShadow: `0 0 12px ${BRAND}55, inset 0 0 0 2px ${BRAND}`,
               filter: "blur(0.8px)",
