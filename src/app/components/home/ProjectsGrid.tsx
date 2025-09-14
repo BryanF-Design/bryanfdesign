@@ -20,33 +20,33 @@ const PROJECTS: Project[] = [
     slug: "goldenrepublic",
     title: "Golden Republic",
     url: "https://goldenrepublic.com.mx",
-    cover: "/projects/goldenrepublic-cover.jpg",
-    logo: "/projects/goldenrepublic-logo.svg",
-    tags: ["Next.js", "Tailwind", "SEO", "GSAP"],
+    cover: "/portfolio/goldenrepublicsite.png",
+    logo: "/portfolio/goldenrepubliclogo.png",
+    tags: ["WordPress", "PHP", "SEO"],
   },
   {
     slug: "brasaprive",
-    title: "Brasa Privé",
+    title: "Brasa Prive",
     url: "https://brasaprive.com.mx",
-    cover: "/projects/brasaprive-cover.jpg",
-    logo: "/projects/brasaprive-logo.svg",
-    tags: ["Next.js", "GSAP", "Performance"],
+    cover: "/portfolio/brasaprivesite.png",
+    logo: "/portfolio/brasaprivelogo.png",
+    tags: ["WordPress", "WooCommerce", "Performance"],
   },
   {
     slug: "serviciosecem",
-    title: "Servicio SECEM",
+    title: "Servicio ECEM",
     url: "https://serviciosecem.com.mx",
-    cover: "/projects/serviciosecem-cover.jpg",
-    logo: "/projects/serviciosecem-logo.svg",
-    tags: ["Next.js", "UX", "SEO"],
+    cover: "/portfolio/ecemsite.png",
+    logo: "/portfolio/ecemlogo.png",
+    tags: ["WordPress", "HTML", "JavaScript"],
   },
   {
     slug: "industriastritton",
     title: "Industrias Tritton",
     url: "https://industriastritton.com",
-    cover: "/projects/industriastritton-cover.jpg",
-    logo: "/projects/industriastritton-logo.svg",
-    tags: ["Next.js", "UI Motion", "SEO"],
+    cover: "/portfolio/trittonsite.png",
+    logo: "/portfolio/trittonlogo.png",
+    tags: ["WordPress", "BigData", "SEO"],
   },
 ];
 
@@ -56,14 +56,14 @@ export default function ProjectsGrid() {
       <div className="mx-auto w-full max-w-7xl px-6 lg:px-10">
         <div className="mb-6 flex items-end justify-between gap-4">
           <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
-            Featured projects
+            Trabajos destacados
           </h2>
 
           <Link
             href="/proyectos"
             className="inline-flex items-center rounded-xl border border-white/15 bg-white/10 px-4 py-2 text-sm text-white/85 hover:bg-white/15"
           >
-            View all
+            Ver proyectos
           </Link>
         </div>
 
@@ -142,14 +142,14 @@ export default function ProjectsGrid() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center rounded-xl bg-[#b4e332] px-4 py-2 text-sm font-semibold text-black hover:brightness-95"
                   >
-                    Visit site
+                    Visitar sitio
                   </a>
 
                   <Link
                     href={`/projects/${p.slug}`} // futura página de case study
                     className="inline-flex items-center rounded-xl border border-white/15 bg-white/10 px-4 py-2 text-sm text-white/85 hover:bg-white/15"
                   >
-                    View case
+                    Ver proyecto
                   </Link>
                 </div>
               </div>

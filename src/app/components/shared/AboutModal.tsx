@@ -6,11 +6,11 @@ import Image from "next/image";
 const BRAND = "#B4E332";
 
 const SOCIAL = [
-  { href: "https://www.facebook.com/tuusuario", label: "Facebook", iconPath: "/facebook-boxed-svgrepo-com.svg" },
-  { href: "https://www.instagram.com/tuusuario", label: "Instagram", iconPath: "/instagram-svgrepo-com (2).svg" },
+  { href: "https://www.facebook.com/share/1R1rS2ToKf/", label: "Facebook", iconPath: "/facebook-boxed-svgrepo-com.svg" },
+  { href: "https://www.instagram.com/bryanf_design/", label: "Instagram", iconPath: "/instagram-svgrepo-com (2).svg" },
   { href: "https://wa.me/5210000000000", label: "WhatsApp", iconPath: "/whatsapp-svgrepo-com (1).svg" },
-  { href: "https://github.com/tuusuario", label: "GitHub", iconPath: "/github-svgrepo-com.svg" },
-  { href: "https://www.linkedin.com/in/tuusuario", label: "LinkedIn", iconPath: "/linkedin-svgrepo-com (1).svg" },
+  { href: "https://github.com/BryanF-Design", label: "GitHub", iconPath: "/github-svgrepo-com.svg" },
+  { href: "https://www.linkedin.com/in/bryanfdesigner", label: "LinkedIn", iconPath: "/linkedin-svgrepo-com (1).svg" },
 ];
 
 function SocialGlyph({ path, className = "" }: { path: string; className?: string }) {
@@ -52,7 +52,7 @@ export default function AboutModal({ onClose }: { onClose: () => void }) {
           {/* Foto */}
           <div className="relative aspect-[3/4] overflow-hidden rounded-2xl border border-white/10 bg-black/30">
             <Image
-              src="/about/me.jpg" // 👈 coloca tu foto en /public/about/me.jpg
+              src="/me/me.png" // 👈 coloca tu foto en /public/about/me.jpg
               alt="BryanF"
               fill
               className="object-cover"
