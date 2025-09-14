@@ -52,7 +52,7 @@ export default function AboutModal({ onClose }: { onClose: () => void }) {
           {/* Foto */}
           <div className="relative aspect-[3/4] overflow-hidden rounded-2xl border border-white/10 bg-black/30">
             <Image
-              src="public/me/me.png"  
+              src="/me/ME.png"  
               alt="BryanF"
               fill
               className="object-cover"
